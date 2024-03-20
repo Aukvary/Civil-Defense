@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyHealth : HealthController
 {
     [SerializeField] private float _health;
+    [SerializeField] private Animator _animator;
 
     private float _maxHealth;
 
@@ -31,6 +32,7 @@ public class EnemyHealth : HealthController
     public override void DealDamage(float damage)
     {
         base.DealDamage(damage);
+        _animator.SetTrigger("GetHit");
         OnHitEvent?.Invoke();
     }
 

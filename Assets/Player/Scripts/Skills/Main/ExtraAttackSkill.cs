@@ -28,19 +28,19 @@ class ExtraAttackSkill : Skill
 
     private void Shoot()
     {
-        if (_enemyTrigger.enemyHealths == null)
+        if (_enemyTrigger.objects == null)
             return;
         int count = _count[currentLevel];
-        foreach(var mob in _enemyTrigger.enemyHealths)
+        for(int i = _enemyTrigger.objects.Count - 1; i >= 0; i--)
         {
             if (count < 0) return;
-            if (mob == null)
+            if (_enemyTrigger.objects[i] == null)
             {
-                _enemyTrigger.enemyHealths.Remove(mob);
-                return;
+                _enemyTrigger.objects.Remove(_enemyTrigger.objects[i]);
+                continue;
             }
 
-            _spawnPosition.LookAt(mob.transform.position);
+            _spawnPosition.LookAt(_enemyTrigger.objects[i].transform.position);
             _bullet.Shoot(_spawnPosition, _damage[currentLevel]);
             count--;
         }

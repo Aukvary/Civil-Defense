@@ -29,6 +29,7 @@ public abstract class Dome : MonoBehaviour
 
     public virtual void DestroyDome()
     {
-        Destroy(gameObject);
+        transform.Translate(0, -100, 0);
+        Destroy(gameObject, 0.1f);
     }
 }

@@ -19,13 +19,8 @@ class GetterExp : MonoBehaviour
 		if (_playerTrigger.count <= 0)
 			return;
 
-        foreach(var item in _playerTrigger.playerHealths)
+        foreach(var item in _playerTrigger.objects)
         {
-            if (item == null)
-            {
-                _playerTrigger.playerHealths.Remove(item);
-                continue;
-            }
             var clone = item.GetComponent<CloneExpSystem>();
             if(clone != null)
             {
