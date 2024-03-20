@@ -42,7 +42,6 @@ public class Trigger<T> : MonoBehaviour
         var obj = other.GetComponent<T>();
 
         if (obj == null || other.isTrigger) return;
-
         _objects.Remove(obj);
         OnRemoveEvent?.Invoke();
     }

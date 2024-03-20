@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Recorder.Encoder;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +7,7 @@ public class AttackController : MonoBehaviour
     [Header("General")]
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform _spawnerTransform;
-    [SerializeField]private float _crit = 1;
+    [SerializeField] private float _crit = 1;
     [SerializeField] private int _chance = 1;
 
     [Header("Stats")]
@@ -33,7 +32,7 @@ public class AttackController : MonoBehaviour
 
         set
         {
-            if(_level < value)
+            if (_level < value)
             {
                 _level = value;
             }
@@ -42,7 +41,15 @@ public class AttackController : MonoBehaviour
 
     public float damage => _damage[_level];
 
-    public float attackSpeed => _attackSpeed[_level];
+    public float attackSpeed 
+    {
+        get => _attackSpeed [_level];
+
+        private set
+        {
+            _attackSpeed[_level] = value;
+        }
+    }
 
     public bool isTarget
     {
@@ -113,7 +120,7 @@ public class AttackController : MonoBehaviour
     private void ChangeState()
     {
         if (!isTarget) return;
-        
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             (_currentState as AutoAttackState).Stop();
@@ -126,5 +133,21 @@ public class AttackController : MonoBehaviour
             _currentState = _states[1];
             _enemyTrigger.gameObject.SetActive(true);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var dome = other.GetComponent<UpgradeDome>();
+
+        if (dome != null)
+            attackSpeed /= dome.AttackSpeedMulti;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var dome = other.GetComponent<UpgradeDome>();
+
+        if(dome != null)
+            attackSpeed *= dome.AttackSpeedMulti;
     }
 }

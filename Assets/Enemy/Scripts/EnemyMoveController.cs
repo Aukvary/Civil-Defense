@@ -14,6 +14,8 @@ public class EnemyMoveController : MonoBehaviour
 
     private ScaleHealth _currentTarget;
 
+    private float _speed;
+
     private Vector3 basePosition => _parentTransform.position;
 
     private bool canPickTarget => Vector3.Distance(transform.position, basePosition) < _freeWalkRange;
@@ -25,7 +27,7 @@ public class EnemyMoveController : MonoBehaviour
         _parentTransform = transform.parent;
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
-
+        _speed = _navMeshAgent.speed;
     }
 
     private void Update()
@@ -40,9 +42,11 @@ public class EnemyMoveController : MonoBehaviour
 
     private void PickNewTarget()
     {
-        if (_navMeshAgent.remainingDistance >= _navMeshAgent.stoppingDistance &&
+        if (_navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance &&
             _navMeshAgent.hasPath)
             return;
+        if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+            _navMeshAgent.ResetPath();
         var target = _playerTrigger.GetRandom();
 
         if(target == null)
@@ -54,5 +58,21 @@ public class EnemyMoveController : MonoBehaviour
         _currentTarget = target;
 
         _navMeshAgent.SetDestination(target.transform.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var stun = other.GetComponent<StunDome>();
+
+        if (stun != null)
+            _navMeshAgent.speed = 0;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var stun = other.GetComponent<StunDome>();
+
+        if (stun != null)
+            _navMeshAgent.speed = _speed;
     }
 }

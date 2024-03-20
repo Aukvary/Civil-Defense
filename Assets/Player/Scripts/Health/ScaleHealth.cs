@@ -80,20 +80,24 @@ public abstract class ScaleHealth : HealthController
     private void OnTriggerEnter(Collider col)
     {
         var missDome = col.GetComponent<MissDome>();
+        var heal = col.GetComponent<HealAura>();
 
         if (missDome != null)
-        {
             _isUnDead = true;
-        }
+
+        if (heal != null)
+            regeneration += heal.healCount;
     }
 
     private void OnTriggerExit(Collider col)
     {
         var missDome = col.GetComponent<MissDome>();
+        var heal = col.GetComponent<HealAura>();
 
         if (missDome != null)
-        {
             _isUnDead = false;
-        }
+
+        if(heal != null)
+            regeneration -= heal.healCount;
     }
 }

@@ -70,7 +70,7 @@ public class LevelController : MonoBehaviour
         _skills.Add(_missDomeSkill);
         _skills.Add(_extraAttackSkill);
 
-        _playerHealth = GetComponent<PlayerHealth>();
+        _playerHealth = GetComponentInParent<PlayerHealth>();
         _attackController = GetComponent<AttackController>();
     }
 
@@ -156,6 +156,8 @@ public class LevelController : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V))
+            AddExp(needExp);
         DrawSkills();
         UpgradeSkill();
         UpgradeUlti();

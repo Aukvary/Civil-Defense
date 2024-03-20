@@ -66,7 +66,7 @@ public abstract class CameraState
     {
         transform = gameObject.transform;
 
-        followObject = transform.parent;
+        followObject = transform.parent.parent;
 
         this.rotateSpeed = rotateSpeed;
     }

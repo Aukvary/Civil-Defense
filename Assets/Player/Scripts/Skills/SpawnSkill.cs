@@ -24,10 +24,10 @@ public class SpawnSkill : ActionSkill
 
     private void Awake()
     {
-        if (GetComponent<PlayerClone>())
-            _healthControlller = GetComponent<CloneHealth>();
+        if (GetComponent<CloneExpSystem>())
+            _healthControlller = GetComponentInParent<CloneHealth>();
         else
-            _healthControlller = GetComponent<PlayerHealth>();
+            _healthControlller = GetComponentInParent<PlayerHealth>();
 
     }
 

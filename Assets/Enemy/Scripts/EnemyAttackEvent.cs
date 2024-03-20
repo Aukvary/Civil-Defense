@@ -7,7 +7,6 @@ public class EnemyAttackEvent : MonoBehaviour
 
     public void AttackEvent()
     {
-        print("che");
         OnAttackEvent?.Invoke();
     }
 }

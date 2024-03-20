@@ -63,13 +63,13 @@ public class DarkMirrorSkill : ActionSkill
 
     private void Awake()
     {
-        _mainHealth = GetComponent<PlayerHealth>();
+        _mainHealth = GetComponentInParent<PlayerHealth>();
 
         _levelController = GetComponent<LevelController>();
 
         _mainCameraController = GetComponentInChildren<CameraController>();
 
-        _mainMoveController = GetComponent<MoveController>();
+        _mainMoveController = GetComponentInParent<MoveController>();
 
         _mainAttackController = GetComponentInChildren<AttackController>();
 
@@ -94,18 +94,18 @@ public class DarkMirrorSkill : ActionSkill
 
         _currentClone.lifeTime = cloneLifeTime;
 
-        var clonehealth = _currentClone.GetComponent<CloneHealth>();
+        var clonehealth = _currentClone.GetComponentInChildren<CloneHealth>();
         clonehealth.OnDeadEvent += OnDie;
         clonehealth.currentLevel = _mainHealth.currentLevel;
 
-        CloneExpSystem cloneExp = _currentClone.GetComponent<CloneExpSystem>();
+        CloneExpSystem cloneExp = _currentClone.GetComponentInChildren<CloneExpSystem>();
         cloneExp.levelController = _levelController;
 
         _cloneCameraController = _currentClone.GetComponentInChildren<CameraController>();
         _cloneMoveController = _currentClone.GetComponent<MoveController>();
-        _cloneAttackController = _currentClone.GetComponent<AttackController>();
-        _stunDomeSkill = _currentClone.GetComponent<StunDomeSkill>();
-        _upgradeDomeSkill = _currentClone.GetComponent<UpgradeDomeSkill>();
+        _cloneAttackController = _currentClone.GetComponentInChildren<AttackController>();
+        _stunDomeSkill = _currentClone.GetComponentInChildren<StunDomeSkill>();
+        _upgradeDomeSkill = _currentClone.GetComponentInChildren<UpgradeDomeSkill>();
         _cloneUI = _currentClone.uI;
 
         _cloneAttackController.currentLevel = _mainAttackController.currentLevel;

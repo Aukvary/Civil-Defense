@@ -7,7 +7,7 @@ public class FreeCameraState : CameraState
 
     public override void Rotate()
     {
-        Follow();
+        transform.position = followObject.position + Vector3.up;
 
         float xAngle = localAngle.x - (Time.deltaTime * rotateSpeed * Input.GetAxis(Constants.MouseY));
 
@@ -19,10 +19,5 @@ public class FreeCameraState : CameraState
         float yAngle = localAngle.y + (Time.deltaTime * rotateSpeed * Input.GetAxis(Constants.MouseX));
 
         localAngle = new Vector3 (xAngle, yAngle);
-    }
-
-    private void Follow()
-    {
-        transform.position = followObject.position + Vector3.up;
     }
 }

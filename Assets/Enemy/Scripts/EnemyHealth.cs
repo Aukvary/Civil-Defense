@@ -1,9 +1,12 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : HealthController
 {
     [SerializeField] private float _health;
+    [SerializeField] private float _disappearSpeed;
     [SerializeField] private Animator _animator;
 
     private float _maxHealth;
@@ -12,8 +15,8 @@ public class EnemyHealth : HealthController
 
     public event Action OnHitEvent;
 
-    public override float health 
-    { 
+    public override float health
+    {
         get => _health;
         protected set
         {
@@ -32,14 +35,18 @@ public class EnemyHealth : HealthController
     public override void DealDamage(float damage)
     {
         base.DealDamage(damage);
-        _animator.SetTrigger("GetHit");
         OnHitEvent?.Invoke();
     }
 
     public override void Die()
     {
         OnDieEvent?.Invoke();
-        Destroy(gameObject);
+        _animator.SetTrigger("Die");
+        transform.parent.GetComponent<EnemyMoveController>().enabled = false;
+        transform.parent.GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<EnemyAttackController>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        Destroy(transform.parent.gameObject, 3);
     }
 
     private void OnTriggerEnter(Collider col)
@@ -52,7 +59,7 @@ public class EnemyHealth : HealthController
             DealDamage(bullet.damage);
         }
 
-        if(explosion != null)
+        if (explosion != null)
         {
             DealDamage(explosion.damage);
             explosion.DestroyDome();
