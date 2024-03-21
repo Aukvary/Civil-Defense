@@ -114,7 +114,7 @@ MonoBehaviour:
   - 1.5
   - 1.5
   - 1.5
-  _enemyTrigger: {fileID: 0}
+  _enemyTrigger: {fileID: 2210900171041384478}
   _range: 4
 --- !u!114 &3824888420351171386
 MonoBehaviour:
@@ -449,6 +449,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 029d65e1fd234df46a64e64f5e2c72d5, type: 3}
+--- !u!114 &2210900171041384478 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2119727622776711096, guid: 029d65e1fd234df46a64e64f5e2c72d5, type: 3}
+  m_PrefabInstance: {fileID: 271474880488525734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34837fb22f8556a43ac784e07271683a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7333199850235499543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7350079779716586417, guid: 029d65e1fd234df46a64e64f5e2c72d5, type: 3}

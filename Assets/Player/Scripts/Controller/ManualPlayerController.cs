@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class ManualPlayerController : PlayerControllState
@@ -6,7 +7,7 @@ public class ManualPlayerController : PlayerControllState
 
     private float _gravity;
 
-    private float _fallVelocity = 1;
+    private float _fallVelocity;
 
     private CharacterController _controller;
 
@@ -22,25 +23,39 @@ public class ManualPlayerController : PlayerControllState
         _gravity = gravity;
     }
 
-    public override void SetDirection() => 
-        direction = Walk() + Jump();
+    public override void Update()
+    {
+        Walk();
+    }
 
-    public override void Move()
+    public override void FixedUpdate()
     {
         if (!IsTarget)
             return;
-        _fallVelocity += _gravity * Time.fixedDeltaTime;
 
         _controller.Move(direction * Time.fixedDeltaTime);
+
+        _fallVelocity += _gravity * Time.fixedDeltaTime;
+
+        _controller.Move(Vector3.down * _fallVelocity);
+
+        if (isLand)
+            _fallVelocity = 0;
     }
 
-    private Vector3 Walk()
+    private void Walk()
     {
         var direction = Vector3.zero;
 
         _runAnimation = 0;
 
-        if(Input.GetKey(KeyCode.W))
+        if (_controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            _fallVelocity -= _jumpForce;
+            animator.SetTrigger("Jump");
+        }
+
+        if (Input.GetKey(KeyCode.W))
         {
             direction += transform.forward;
             _runAnimation = 1;
@@ -65,18 +80,6 @@ public class ManualPlayerController : PlayerControllState
         }
         animator.SetInteger("RunAnimation", _runAnimation);
 
-        return direction * speed;
-    }
-
-    private Vector3 Jump()
-    {
-        var direction = Vector3.down;
-        if (isLand && Input.GetKeyDown(KeyCode.Space))
-        {
-            direction += Vector3.up * _jumpForce;
-            animator.SetTrigger("Jump");
-        }
-
-        return direction;
+        base.direction = direction * speed;
     }
 }

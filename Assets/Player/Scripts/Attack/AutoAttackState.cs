@@ -39,9 +39,11 @@ class AutoAttackState : AttackState
     {
         SetTimer();
         ManualPickEnemy();
-        if (_enemyHealth == null) PickNewEnemy();
-        if (_enemyHealth == null) return;
-        if(_enemyHealth.health <= 0) PickNewEnemy();
+        if (_enemyHealth == null) 
+            _enemyHealth = _trigger.GetRandom();
+
+        if (_enemyHealth == null) 
+            return;
 
         FollowToEnemy();
         spawnerTransform.LookAt(_enemyHealth.transform);
@@ -62,10 +64,6 @@ class AutoAttackState : AttackState
             _enemyHealth = health;
     }
 
-    private void PickNewEnemy()
-    {
-        _enemyHealth = _trigger.GetRandom();
-    }
 
     private void FollowToEnemy()
     {

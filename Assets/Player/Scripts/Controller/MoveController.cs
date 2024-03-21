@@ -51,6 +51,7 @@ class MoveController : MonoBehaviour
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.enabled = false;
     }
 
     private void Start()
@@ -72,13 +73,13 @@ class MoveController : MonoBehaviour
     {
         if (!isTarget) return;
 
-        _currentControll.SetDirection();
+        _currentControll.Update();
         ChangeState();
     }
 
     private void FixedUpdate()
     {
-        _currentControll.Move();
+        _currentControll.FixedUpdate();
     }
 
     private void ChangeState()
@@ -88,12 +89,14 @@ class MoveController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             _navMeshAgent.ResetPath();
+            _navMeshAgent.enabled = false;
             _currentControll = _controls[0];
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             _animator.SetInteger("RunAnimation", 0);
+            _navMeshAgent.enabled = true;
             _currentControll = _controls[1];
         }
     }

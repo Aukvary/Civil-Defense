@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     {
         get
         {
-            Destroy(gameObject, 0.1f);
             return _damage;
         }
 

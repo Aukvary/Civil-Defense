@@ -36,12 +36,12 @@ class AutoPlayerController : PlayerControllState
 
     private Ray viewDirection => _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
-    public override void Move()
+    public override void FixedUpdate()
     {
         
     }
 
-    public override void SetDirection() 
+    public override void Update() 
     {
         SetAnimation();
         if (!Input.GetKeyDown(KeyCode.W) || !IsTarget)

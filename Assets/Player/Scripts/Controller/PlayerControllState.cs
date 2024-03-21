@@ -50,7 +50,7 @@ public abstract class PlayerControllState
         this.animator = animator;
     }
 
-    public abstract void SetDirection();
+    public abstract void Update();
 
-    public abstract void Move();
+    public abstract void FixedUpdate();
 }

@@ -96,7 +96,7 @@ public class AttackController : MonoBehaviour
         var manual = new ManualAttackState(_bullet, _spawnerTransform, camera);
         _states.Add(manual);
 
-        var navMesh = GetComponent<NavMeshAgent>();
+        var navMesh = GetComponentInParent<NavMeshAgent>();
         var auto = new AutoAttackState(_bullet, _spawnerTransform, navMesh, _enemyTrigger, camera);
         auto.range = _range;
         _states.Add(auto);

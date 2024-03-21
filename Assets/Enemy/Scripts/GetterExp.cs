@@ -16,19 +16,23 @@ class GetterExp : MonoBehaviour
 
     private void GiveExp()
     {
-		if (_playerTrigger.count <= 0)
-			return;
+        if (_playerTrigger.count <= 0)
+        {
+            return;
+        }
 
         foreach(var item in _playerTrigger.objects)
         {
-            var clone = item.GetComponent<CloneExpSystem>();
+            if (item == null)
+                continue;
+            var clone = item.GetComponentInChildren<CloneExpSystem>();
             if(clone != null)
             {
                 clone.AddExp(_containsExp);
                 return;
             }
 
-            var player = item.GetComponent<LevelController>();
+            var player = item.GetComponentInChildren<LevelController>();
             if(player != null)
             {
                 player.AddExp(_containsExp);

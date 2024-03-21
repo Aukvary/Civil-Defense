@@ -9,9 +9,21 @@ public class EnemySpawner : MonoBehaviour
 
     private float _currentTime;
 
-    private List<HealthController> _entities;
+    private List<HealthController> _entities = new List<HealthController>();
 
     private bool canSpawn => _entities.Count == 0;
+
+    private SphereCollider _collider;
+
+    private void Awake()
+    {
+        _collider = GetComponent<SphereCollider>();
+    }
+
+    private void Start()
+    {
+        _currentTime = _coolDownTime;
+    }
 
     private void Update()
     {
@@ -22,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
         }
         Spawn();
         _currentTime = 0;
+
     }
 
     private void Spawn()
