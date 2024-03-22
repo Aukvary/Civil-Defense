@@ -135,6 +135,7 @@ MonoBehaviour:
   - 260
   _respawnTime: 10
   _respawnPosition: {fileID: 0}
+  _deathUI: {fileID: 6298989812251450041}
 --- !u!1 &3014716010909609779
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +707,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7551901570129530576, guid: 4bce05c4be2de6d45b9188bf239bb172, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7669265506673127871, guid: 4bce05c4be2de6d45b9188bf239bb172, type: 3}
       propertyPath: m_Name
       value: PlayerUI
@@ -888,6 +893,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6298989812251450041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7551901570129530576, guid: 4bce05c4be2de6d45b9188bf239bb172, type: 3}
+  m_PrefabInstance: {fileID: 4586704750132876393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6522492456637636521 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7287866533324868544, guid: 4bce05c4be2de6d45b9188bf239bb172, type: 3}

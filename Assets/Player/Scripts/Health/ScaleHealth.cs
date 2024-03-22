@@ -55,7 +55,7 @@ public abstract class ScaleHealth : HealthController
         health = _currentHealth;
     }
 
-    protected void DrawUI()
+    protected virtual void DrawUI()
     {
         _healthUI.anchorMax = new Vector2(health / maxHealth, 1);
 

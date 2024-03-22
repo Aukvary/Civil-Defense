@@ -9,6 +9,8 @@ public class PlayerHealth : ScaleHealth
     [Header("DeathParametors")]
     [SerializeField] private float _respawnTime;
     [SerializeField] private Transform _respawnPosition;
+    [Header("UI")]
+    [SerializeField] private GameObject _deathUI;
 
     private DarkMirrorSkill _darkMirrorSkill;
     private ExplosionDomeSkill _explosionDomeSkill;
@@ -29,7 +31,7 @@ public class PlayerHealth : ScaleHealth
         private set
         {
             _isAlive = value;
-            if (_navMeshAgent.hasPath)
+            if (_navMeshAgent.enabled && _navMeshAgent.hasPath)
                 _navMeshAgent.ResetPath();
 
             _darkMirrorSkill.enabled = value;
@@ -38,6 +40,7 @@ public class PlayerHealth : ScaleHealth
             _attackController.enabled = value;
             _navMeshAgent.enabled = value;
             _characterController.enabled = value;
+            _deathUI.SetActive(!value);
 
             _cameraController.ChangeState(_isAlive ? 0 : 1);
 
@@ -47,13 +50,20 @@ public class PlayerHealth : ScaleHealth
 
     private void Awake()
     {
-        _darkMirrorSkill = GetComponent<DarkMirrorSkill>();
-        _explosionDomeSkill = GetComponent<ExplosionDomeSkill>();
+        _darkMirrorSkill = GetComponentInChildren<DarkMirrorSkill>();
+        _explosionDomeSkill = GetComponentInChildren<ExplosionDomeSkill>();
         _moveController = GetComponent<MoveController>();
-        _attackController = GetComponent<AttackController>();
+        _attackController = GetComponentInChildren<AttackController>();
         _navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         _characterController = GetComponent<CharacterController>();
         _cameraController = GetComponentInChildren<CameraController>();
+    }
+
+    protected override void DrawUI()
+    {
+        base.DrawUI();
+        var timer = _deathUI.GetComponentInChildren<TextMeshProUGUI>();
+        timer.text = ((int)(_respawnTime - _currentRespawnTime)).ToString();
     }
 
     protected override void Update()
@@ -71,6 +81,7 @@ public class PlayerHealth : ScaleHealth
         if (!isAlive && _currentRespawnTime < _respawnTime)
         {
             _currentRespawnTime += Time.deltaTime;
+            DrawUI();
         }
         else if (_currentRespawnTime > _respawnTime)
         {
