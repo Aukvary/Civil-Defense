@@ -18,9 +18,10 @@ public class LevelController : MonoBehaviour
     [SerializeField] private Image _ultiSkillBoarder;
     [SerializeField] private RectTransform _ultiProgress;
     [SerializeField] private GameObject _ultiBlock;
-
     [Space]
     [SerializeField] private List<int> _needExp = new List<int>();
+
+    public List<bool> _enabled = new List<bool>(new bool[]{false, false, false, false});
 
     [Range(0, 15)] private int _level = 0;
 
@@ -181,6 +182,7 @@ public class LevelController : MonoBehaviour
             {
                 skill.currentLevel = 0;
                 skill.enabled = true;
+                _enabled[_skills.IndexOf(skill)] = true;
             }
             _skillPoints--;
         }
@@ -203,6 +205,7 @@ public class LevelController : MonoBehaviour
         {
             _darkMirrorSkill.currentLevel = 0;
             _darkMirrorSkill.enabled = true;
+            _enabled[3] = true;
         }
         _ultiPoints--;
         DrawUI();

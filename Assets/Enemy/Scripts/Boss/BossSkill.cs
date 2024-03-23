@@ -7,8 +7,16 @@ public abstract class BossSkill : MonoBehaviour
 
     private float _currentCoolDownTime;
 
+    private EnemyMoveController _moveController;
+
     public PlayerTrigger trigger => _trigger;
     public float coolDownTime => _coolDownTime;
+    public EnemyMoveController moveController => _moveController;
+
+    private void Awake()
+    {
+        _moveController = GetComponentInParent<EnemyMoveController>();
+    }
 
     private void Update()
     {

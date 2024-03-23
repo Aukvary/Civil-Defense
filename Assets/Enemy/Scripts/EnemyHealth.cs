@@ -57,7 +57,6 @@ public class EnemyHealth : HealthController
         if (bullet != null)
         {
             DealDamage(bullet.damage);
-            Destroy(bullet.gameObject);
         }
 
         if (explosion != null)

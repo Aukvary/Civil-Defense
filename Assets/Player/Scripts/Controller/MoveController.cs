@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,6 +18,12 @@ class MoveController : MonoBehaviour
     private Camera _camera;
     private NavMeshAgent _navMeshAgent;
 
+    private bool _isTarget = true;
+    
+    private List<PlayerControllState> _controls = new List<PlayerControllState>();
+
+    private PlayerControllState _currentControll;
+
     public new Camera camera
     {
         get => _camera; 
@@ -26,12 +33,6 @@ class MoveController : MonoBehaviour
                 _camera = value;
         }
     }
-
-    private bool _isTarget = true;
-    
-    private List<PlayerControllState> _controls = new List<PlayerControllState>();
-
-    private PlayerControllState _currentControll;
 
     public bool isTarget
     {
@@ -56,7 +57,9 @@ class MoveController : MonoBehaviour
 
     private void Start()
     {
-        if(GetComponent<PlayerClone>() != null) isTarget = false;
+        if(GetComponent<PlayerClone>() != null) 
+            isTarget = false;
+
         _controls.Add(new ManualPlayerController(gameObject, _animator, _jumpForce, _gravity));
         _currentControll = _currentControll = _controls[0];
 

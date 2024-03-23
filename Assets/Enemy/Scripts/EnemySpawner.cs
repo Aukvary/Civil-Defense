@@ -9,15 +9,21 @@ public class EnemySpawner : MonoBehaviour
 
     private float _currentTime;
 
-    private List<HealthController> _entities = new List<HealthController>();
-
-    private bool canSpawn => _entities.Count == 0;
-
-    private SphereCollider _collider;
-
-    private void Awake()
+    private bool canSpawn
     {
-        _collider = GetComponent<SphereCollider>();
+        get
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 2.5f);
+
+            foreach (Collider collider in colliders)
+            {
+                if(collider.GetComponent<HealthController>())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     private void Start()
@@ -39,11 +45,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        for(int i = _entities.Count - 1; i >= 0; i--)
-        {
-            if(_entities[i] == null)
-                _entities.RemoveAt(i);
-        }
         if (!canSpawn)
             return;
 
@@ -51,21 +52,5 @@ public class EnemySpawner : MonoBehaviour
         {
             Instantiate(_crip, transform);
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var health = other.GetComponent<HealthController>();
-
-        if(health != null)
-            _entities.Add(health);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        var health = other.GetComponent<HealthController>();
-
-        if (health != null)
-            _entities.Remove(health);
     }
 }

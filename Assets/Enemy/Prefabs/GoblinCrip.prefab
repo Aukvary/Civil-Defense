@@ -285,6 +285,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7047212777993554665}
     - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: _health
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _animator
       value: 
       objectReference: {fileID: 6772325147521355779}

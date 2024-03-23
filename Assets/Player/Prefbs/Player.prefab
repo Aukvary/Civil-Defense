@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6398469516888711090}
   - component: {fileID: 35091281027565671}
   - component: {fileID: 1805473194566087442}
+  - component: {fileID: 3871228318088538821}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -44,7 +45,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038626199271444297}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -99,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 9
   _animator: {fileID: 7688505828454886257}
-  _jumpForce: 10
-  _gravity: 9.8
+  _jumpForce: 0.4
+  _gravity: 1
 --- !u!114 &1805473194566087442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +137,14 @@ MonoBehaviour:
   _respawnTime: 10
   _respawnPosition: {fileID: 0}
   _deathUI: {fileID: 6298989812251450041}
+--- !u!81 &3871228318088538821
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038626199271444297}
+  m_Enabled: 1
 --- !u!1 &3014716010909609779
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,9 +270,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.53
   m_Direction: 1
-  m_Center: {x: 0, y: 1.12, z: 0}
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!114 &810380054685503956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +336,7 @@ MonoBehaviour:
   - 0
   - 0
   _attackSpeed:
-  - 3
+  - 1
   - 2.8
   - 2.5
   - 0
@@ -461,7 +470,8 @@ MonoBehaviour:
   _ultiSkillBoarder: {fileID: 7060621375784477343}
   _ultiProgress: {fileID: 8583344399182168003}
   _ultiBlock: {fileID: 5388502590571580251}
-  _needExp: 0a000000140000001e00000028000000320000003c00000046000000500000005a000000640000006e00000078000000820000008c00000096000000a0000000
+  _needExp: 32000000500000008200000096000000b4000000c8000000dc000000fa000000040100002c0100002c0100002c0100002c0100002c0100002c0100002c010000
+  _enabled: 00000000
 --- !u!1001 &235457350559227364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,12 +520,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1006275738095012724, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: m_Pitch
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006275738095012724, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: m_Volume
+      value: 0.136
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006275738095012724, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b49782fccca22294981a0c2578b0dfa0, type: 3}
+    - target: {fileID: 1006275738095012724, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_Name
       value: Jammo_Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4757836856755875626, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -971,7 +996,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraHolder
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5063684209815731971, guid: 7bed91fcf2a29c34b88911f357beb28c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

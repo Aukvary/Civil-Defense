@@ -286,6 +286,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3952935900893853019, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: _damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952935900893853019, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _animator
       value: 
       objectReference: {fileID: 2464537811440397730}
@@ -294,9 +298,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5492937801896469132}
     - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: _health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _animator
       value: 
       objectReference: {fileID: 2464537811440397730}
+    - target: {fileID: 6235491395440891520, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: _containsExp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6235491395440891520, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _playerTrigger
       value: 

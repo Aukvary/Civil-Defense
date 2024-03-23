@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3262930790594055369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6718829249469217647}
+  m_Layer: 0
+  m_Name: StoneThrower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6718829249469217647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3262930790594055369}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4869921166794248293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7165572067572617148
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +65,7 @@ Transform:
   - {fileID: 5395321223757742877}
   - {fileID: 6564359007270427971}
   - {fileID: 8412587398161691272}
+  - {fileID: 6718829249469217647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1197130336712642729
@@ -71,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTrigger: {fileID: 6554589572266658221}
-  _freeWalkRange: 20
+  _freeWalkRange: 50
   _animator: {fileID: 8412587398161691275}
 --- !u!1001 &3398302811808562914
 PrefabInstance:
@@ -87,11 +119,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 15
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 15
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -241,13 +273,59 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1988298796368625259, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8039204045388996909}
+    - targetCorrespondingSourceObject: {fileID: 1988298796368625259, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6067683560043265182}
   m_SourcePrefab: {fileID: 100100000, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
 --- !u!4 &5395321223757742877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2748102596911560777, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
   m_PrefabInstance: {fileID: 7837161451969657684}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8598756977753605439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1988298796368625259, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+  m_PrefabInstance: {fileID: 7837161451969657684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8039204045388996909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598756977753605439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8d9a5ec65630141841f1f920778b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trigger: {fileID: 6554589572266658221}
+  _coolDownTime: 4
+  _throwSpeed: 150
+  _damage: 40
+  _stone: {fileID: -1842668337154049569, guid: cad9f745870d9f448bf225d2a253d382, type: 3}
+  _spawTransform: {fileID: 6718829249469217647}
+--- !u!114 &6067683560043265182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598756977753605439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212be7fa42626cc41b6ade3b4cbc40dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trigger: {fileID: 6554589572266658221}
+  _coolDownTime: 2
+  _stone: {fileID: -1842668337154049569, guid: cad9f745870d9f448bf225d2a253d382, type: 3}
+  _damage: 10
+  _lifeTime: 1
 --- !u!1001 &8412587399236670962
 PrefabInstance:
   m_ObjectHideFlags: 0

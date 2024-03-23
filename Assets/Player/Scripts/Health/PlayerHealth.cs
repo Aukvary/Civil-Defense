@@ -12,13 +12,17 @@ public class PlayerHealth : ScaleHealth
     [Header("UI")]
     [SerializeField] private GameObject _deathUI;
 
-    private DarkMirrorSkill _darkMirrorSkill;
     private ExplosionDomeSkill _explosionDomeSkill;
+    private MissDomeSkill _missDomeSkill;
+    private ExtraAttackSkill _extraAttackSkill;
+    private DarkMirrorSkill _darkMirrorSkill;
     private MoveController _moveController;
     private AttackController _attackController;
     private NavMeshAgent _navMeshAgent;
     private CharacterController _characterController;
     private CameraController _cameraController;
+
+    private LevelController _levelController;
 
     private bool _isAlive = true;
 
@@ -33,12 +37,15 @@ public class PlayerHealth : ScaleHealth
             _isAlive = value;
             if (_navMeshAgent.enabled && _navMeshAgent.hasPath)
                 _navMeshAgent.ResetPath();
-
-            _darkMirrorSkill.enabled = value;
-            _explosionDomeSkill.enabled = value;
-            _moveController.enabled = value;
-            _attackController.enabled = value;
-            _navMeshAgent.enabled = value;
+            if (_levelController._enabled[0])
+                _explosionDomeSkill.enabled = value;
+            if (_levelController._enabled[1])
+                _darkMirrorSkill.enabled = value;
+            if (_levelController._enabled[2])
+                _moveController.enabled = value;
+            if (_levelController._enabled[3])
+                _attackController.enabled = value;
+            _navMeshAgent.enabled = false;
             _characterController.enabled = value;
             _deathUI.SetActive(!value);
 
@@ -50,13 +57,17 @@ public class PlayerHealth : ScaleHealth
 
     private void Awake()
     {
-        _darkMirrorSkill = GetComponentInChildren<DarkMirrorSkill>();
         _explosionDomeSkill = GetComponentInChildren<ExplosionDomeSkill>();
+        _missDomeSkill = GetComponentInChildren<MissDomeSkill>();
+        _extraAttackSkill = GetComponentInChildren<ExtraAttackSkill>();
+        _darkMirrorSkill = GetComponentInChildren<DarkMirrorSkill>();
         _moveController = GetComponent<MoveController>();
         _attackController = GetComponentInChildren<AttackController>();
         _navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         _characterController = GetComponent<CharacterController>();
         _cameraController = GetComponentInChildren<CameraController>();
+
+        _levelController = GetComponentInChildren<LevelController>();
     }
 
     protected override void DrawUI()

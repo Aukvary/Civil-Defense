@@ -81,12 +81,15 @@ public abstract class ScaleHealth : HealthController
     {
         var missDome = col.GetComponent<MissDome>();
         var heal = col.GetComponent<HealAura>();
+        var stone = col.GetComponent<ThrowStone>();
 
         if (missDome != null)
             _isUnDead = true;
 
         if (heal != null)
             regeneration += heal.healCount;
+        if (stone != null)
+            DealDamage(stone.damage);
     }
 
     private void OnTriggerExit(Collider col)

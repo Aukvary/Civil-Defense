@@ -200,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3952935900893853019, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _damage
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3952935900893853019, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _animator
@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 5314008577441472595}
+    - target: {fileID: 6235491395440891520, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: _containsExp
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6235491395440891520, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _playerTrigger
       value: 

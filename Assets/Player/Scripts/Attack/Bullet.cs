@@ -35,4 +35,12 @@ public class Bullet : MonoBehaviour
 
         bullet.GetComponent<Bullet>().damage = damage;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.isTrigger == false)
+        {
+            Destroy(gameObject, 0.1f);
+        }
+    }
 }

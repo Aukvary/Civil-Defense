@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -32,32 +33,24 @@ public class EnemyMoveController : MonoBehaviour
 
     private void Update()
     {
-        if(!canPickTarget)
-        {
-            _navMeshAgent.SetDestination(basePosition);
-        }
         PickNewTarget();
         _animator.SetBool("HasPath", _navMeshAgent.hasPath);
     }
 
     private void PickNewTarget()
     {
-        if (_navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance &&
-            _navMeshAgent.hasPath)
-            return;
         if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             _navMeshAgent.ResetPath();
-        var target = _playerTrigger.GetRandom();
+        _currentTarget = _playerTrigger.GetRandom();
 
-        if(target == null)
+        if(_currentTarget == null || !canPickTarget)
         {
             _navMeshAgent.destination = basePosition;
-            _currentTarget = null;
-            return;
         }
-        _currentTarget = target;
-
-        _navMeshAgent.SetDestination(target.transform.position);
+        else
+        {
+            _navMeshAgent.SetDestination(_currentTarget.transform.position);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

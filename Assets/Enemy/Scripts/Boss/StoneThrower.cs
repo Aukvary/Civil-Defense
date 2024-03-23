@@ -2,29 +2,17 @@ using UnityEngine;
 
 public class StoneThrower : BossSkill
 {
-    [SerializeField] private Rigidbody _stown;
-    [SerializeField] private float _throwAngle;
-
-    private EnemyMoveController _moveController;
-
-    private ScaleHealth _currentTarget;
-
-    private void Awake()
-    {
-        _moveController = GetComponentInParent<EnemyMoveController>();
-    }
+    [SerializeField] private float _throwSpeed;
+    [SerializeField] private float _damage;
+    [SerializeField] private ThrowStone _stone;
+    [SerializeField] private Transform _spawTransform;
 
     protected override void UseSkill()
     {
-        _currentTarget = _moveController.currentTarget;
+        var _currentTarget = moveController.currentTarget;
         if (_currentTarget == null)
             return;
 
-        var tPos = _currentTarget.transform.position;
-        var direction = new Vector3(tPos.x, transform.position.y + 1, tPos.y); 
-
-        float funcX = (direction.x - transform.position.x) / (transform.position - tPos).magnitude;
-        float funcZ = (direction.z - transform.position.z) / (transform.position - tPos).magnitude;
-        float funcY = (tPos.y - transform.position.y) / (transform.position - tPos).magnitude;
+        _stone.Shoot(_spawTransform.position, _currentTarget.transform.position + Vector3.up * 2, _throwSpeed, _damage);
     }
 }
