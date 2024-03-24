@@ -45,7 +45,6 @@ public class EnemyHealth : HealthController
         transform.parent.GetComponent<EnemyMoveController>().enabled = false;
         transform.parent.GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<EnemyAttackController>().enabled = false;
-        GetComponent<CapsuleCollider>().enabled = false;
         Destroy(transform.parent.gameObject, 3);
     }
 

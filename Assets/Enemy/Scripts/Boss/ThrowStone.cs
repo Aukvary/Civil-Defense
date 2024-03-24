@@ -16,24 +16,18 @@ public class ThrowStone : MonoBehaviour
 
         rb.AddForce((target - position) * force);
         st._damage = damage;
+
+        Destroy(st.gameObject, 10f);
     }
 
     public void Spawn(Transform transform, Vector3 position, float damage, float lifeTime)
     {
-        var stone = Instantiate(gameObject, transform);
-        stone.transform.position = position;
+        var stone = Instantiate(gameObject, position, Quaternion.identity);
+        stone.transform.parent = transform;
 
         var st = stone.GetComponent<ThrowStone>();
 
         st._damage = damage;
         Destroy(st.gameObject, lifeTime);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.isTrigger ==  false)
-        {
-            Destroy(gameObject);
-        }
     }
 }

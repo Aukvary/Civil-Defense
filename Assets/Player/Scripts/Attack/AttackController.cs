@@ -26,6 +26,8 @@ public class AttackController : MonoBehaviour
 
     private int _level;
 
+    private NavMeshAgent _navMeshAgent;
+
     public int currentLevel
     {
         get => _level;
@@ -97,6 +99,7 @@ public class AttackController : MonoBehaviour
         _states.Add(manual);
 
         var navMesh = GetComponentInParent<NavMeshAgent>();
+        _navMeshAgent = navMesh;
         var auto = new AutoAttackState(_bullet, _spawnerTransform, navMesh, _enemyTrigger, camera);
         auto.range = _range;
         _states.Add(auto);
@@ -123,13 +126,18 @@ public class AttackController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            (_currentState as AutoAttackState).Stop();
+            if (_navMeshAgent != null && _navMeshAgent.enabled)
+            {
+                _navMeshAgent.ResetPath();
+                _navMeshAgent.enabled = false;
+            }
             _enemyTrigger.Clear();
             _currentState = _states[0];
             _enemyTrigger.gameObject.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            _navMeshAgent.enabled = true;
             _currentState = _states[1];
             _enemyTrigger.gameObject.SetActive(true);
         }

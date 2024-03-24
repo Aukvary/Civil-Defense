@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +6,9 @@ public class EnemyMoveController : MonoBehaviour
     [SerializeField] private PlayerTrigger _playerTrigger;
     [SerializeField] private float _freeWalkRange;
     [SerializeField] private Animator _animator;
-    
+
+    private bool _isStuned = false;
+
     private Transform _parentTransform;
 
     private NavMeshAgent _navMeshAgent;
@@ -39,11 +39,13 @@ public class EnemyMoveController : MonoBehaviour
 
     private void PickNewTarget()
     {
+        if (_isStuned)
+            return;
         if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             _navMeshAgent.ResetPath();
         _currentTarget = _playerTrigger.GetRandom();
 
-        if(_currentTarget == null || !canPickTarget)
+        if (_currentTarget == null || !canPickTarget)
         {
             _navMeshAgent.destination = basePosition;
         }
@@ -58,7 +60,11 @@ public class EnemyMoveController : MonoBehaviour
         var stun = other.GetComponent<StunDome>();
 
         if (stun != null)
-            _navMeshAgent.speed = 0;
+        {
+            _isStuned = true;
+            _currentTarget = null;
+            _navMeshAgent.ResetPath();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -66,6 +72,8 @@ public class EnemyMoveController : MonoBehaviour
         var stun = other.GetComponent<StunDome>();
 
         if (stun != null)
-            _navMeshAgent.speed = _speed;
+        {
+            _isStuned = false;
+        }
     }
 }

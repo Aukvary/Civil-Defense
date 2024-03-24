@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4869921166794248293}
   - component: {fileID: 1197130336712642729}
   - component: {fileID: 6701428584921168331}
+  - component: {fileID: 2600873499332730791}
   m_Layer: 0
   m_Name: ElementalBoss
   m_TagString: Untagged
@@ -59,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.01718213, y: 0.01718213, z: 0.01718213}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5395321223757742877}
@@ -105,6 +106,33 @@ MonoBehaviour:
   _playerTrigger: {fileID: 6554589572266658221}
   _freeWalkRange: 50
   _animator: {fileID: 8412587398161691275}
+--- !u!54 &2600873499332730791
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165572067572617148}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3398302811808562914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,11 +147,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 100
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -164,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372327891424388001, guid: d6f67c1622b436244b60d0f331554d8c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -255,12 +291,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 602821211921473235}
     - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: _health
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _animator
       value: 
       objectReference: {fileID: 8412587398161691275}
     - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _regeneration
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6235491395440891520, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _containsExp
@@ -270,7 +310,24 @@ PrefabInstance:
       propertyPath: _playerTrigger
       value: 
       objectReference: {fileID: 6554589572266658221}
-    m_RemovedComponents: []
+    - target: {fileID: 9081126378935272712, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: m_Height
+      value: 4.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081126378935272712, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: m_Radius
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081126378935272712, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: m_Center.y
+      value: 2.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081126378935272712, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: m_Center.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -280,6 +337,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1988298796368625259, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6067683560043265182}
+    - targetCorrespondingSourceObject: {fileID: 1988298796368625259, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 474159215792004745}
   m_SourcePrefab: {fileID: 100100000, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
 --- !u!4 &5395321223757742877 stripped
 Transform:
@@ -306,7 +366,7 @@ MonoBehaviour:
   _trigger: {fileID: 6554589572266658221}
   _coolDownTime: 4
   _throwSpeed: 150
-  _damage: 40
+  _damage: 20
   _stone: {fileID: -1842668337154049569, guid: cad9f745870d9f448bf225d2a253d382, type: 3}
   _spawTransform: {fileID: 6718829249469217647}
 --- !u!114 &6067683560043265182
@@ -322,10 +382,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trigger: {fileID: 6554589572266658221}
-  _coolDownTime: 2
+  _coolDownTime: 10
   _stone: {fileID: -1842668337154049569, guid: cad9f745870d9f448bf225d2a253d382, type: 3}
-  _damage: 10
-  _lifeTime: 1
+  _damage: 30
+  _lifeTime: 5
+--- !u!114 &474159215792004745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598756977753605439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9a996348b675341b985a9a86bd1a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _regeneration: 9
+  _health: 600
+  _disappearSpeed: 0
+  _animator: {fileID: 8412587398161691275}
 --- !u!1001 &8412587399236670962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -337,6 +413,10 @@ PrefabInstance:
     - target: {fileID: 1077356408, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
       propertyPath: m_Name
       value: Polyart_Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077356408, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1077356410, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
       propertyPath: m_LocalPosition.x

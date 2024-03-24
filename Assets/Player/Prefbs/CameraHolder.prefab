@@ -141,5 +141,5 @@ MonoBehaviour:
   _camera: {fileID: 8736767037894774986}
   _minFreeAngle: -60
   _maxFreeAngle: 60
-  _minFixedAngle: -30
+  _minFixedAngle: -50
   _maxFixedAngle: 30

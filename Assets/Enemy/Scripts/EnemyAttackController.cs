@@ -35,6 +35,7 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (health == null)
             return;
+
         var distance = Vector3.Distance(transform.position, health.transform.position);
         var angle = Vector3.Angle(transform.forward, health.transform.position - transform.position);
 

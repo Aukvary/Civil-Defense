@@ -91,7 +91,8 @@ class MoveController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _navMeshAgent.ResetPath();
+            if(_navMeshAgent != null && _navMeshAgent.enabled)
+                _navMeshAgent.ResetPath();
             _navMeshAgent.enabled = false;
             _currentControll = _controls[0];
         }

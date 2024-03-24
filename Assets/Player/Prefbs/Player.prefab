@@ -323,35 +323,35 @@ MonoBehaviour:
   - 12
   - 15
   - 18
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
   _attackSpeed:
-  - 1
-  - 2.8
-  - 2.5
-  - 0
-  - 2
-  - 1.8
   - 1.5
+  - 1.5
+  - 1.5
+  - 1.2
+  - 1.2
   - 1.2
   - 1
   - 1
   - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.8
+  - 0.8
+  - 0.8
+  - 0.8
+  - 0.8
+  - 0.8
+  - 0.8
   _enemyTrigger: {fileID: 1732386178483491087}
   _range: 4
 --- !u!114 &88772166606284277
@@ -995,6 +995,10 @@ PrefabInstance:
     - target: {fileID: 7403641980738577921, guid: 7bed91fcf2a29c34b88911f357beb28c, type: 3}
       propertyPath: m_Name
       value: CameraHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523550517666091511, guid: 7bed91fcf2a29c34b88911f357beb28c, type: 3}
+      propertyPath: _maxFixedAngle
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5063684209815731971, guid: 7bed91fcf2a29c34b88911f357beb28c, type: 3}

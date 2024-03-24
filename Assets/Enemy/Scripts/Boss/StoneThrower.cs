@@ -12,6 +12,8 @@ public class StoneThrower : BossSkill
         var _currentTarget = moveController.currentTarget;
         if (_currentTarget == null)
             return;
+        if (Vector3.Distance(transform.position, _currentTarget.transform.position) > 50)
+            return;
 
         _stone.Shoot(_spawTransform.position, _currentTarget.transform.position + Vector3.up * 2, _throwSpeed, _damage);
     }

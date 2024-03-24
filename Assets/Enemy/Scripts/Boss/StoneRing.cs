@@ -12,11 +12,13 @@ public class StoneRing : BossSkill
         if (target == null)
             return;
 
-        float distance = Vector3.Distance(target.transform.position, transform.position) + 2;
-        for (int i = 0; i < 360; i += 10)
+        float distance = Vector3.Distance(target.transform.position, transform.position) + 3;
+        if (distance > 50)
+            return;
+        for (int i = 0; i < 360; i += 12)
         {
-            var pos = new Vector3(distance * Mathf.Cos(i), transform.position.y + 1, distance * Mathf.Sin(i));
-            _stone.Spawn(transform, pos, _damage, _lifeTime);
+            var pos = new Vector3(distance * Mathf.Cos(i), transform.position.y, distance * Mathf.Sin(i));
+            _stone.Spawn(transform, pos + transform.position, _damage, _lifeTime);
         }
     }
 }

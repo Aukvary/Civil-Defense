@@ -75,9 +75,4 @@ class AutoAttackState : AttackState
         if(_enemyHealth == null) return;
         _navMeshAgent.destination = _enemyHealth.transform.position;
     }
-
-    public void Stop()
-    {
-        _enemyHealth = null;
-    }
 }

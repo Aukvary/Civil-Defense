@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1850981978400842303}
   - component: {fileID: -4359625680427960776}
   - component: {fileID: 8904097692576440210}
+  - component: {fileID: 4726919612053890577}
   m_Layer: 0
   m_Name: BearCrrep
   m_TagString: Untagged
@@ -73,6 +74,33 @@ MonoBehaviour:
   _playerTrigger: {fileID: 5938250667239122041}
   _freeWalkRange: 15
   _animator: {fileID: 5314008577441472595}
+--- !u!54 &4726919612053890577
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9118972792686222453}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2861828239211615030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,6 +238,10 @@ PrefabInstance:
       propertyPath: _onAttackEvent
       value: 
       objectReference: {fileID: 4177887843968436120}
+    - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
+      propertyPath: _health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6099925290442289929, guid: 78cdabfefb963ac4091f515536aa22a7, type: 3}
       propertyPath: _animator
       value: 
