@@ -170,7 +170,7 @@ public class LevelController : MonoBehaviour
             return;
         foreach(Skill skill in _skills)
         {
-            if (!Input.GetKeyDown(skill.actionKey) || !Input.GetKey(KeyCode.LeftControl))
+            if (!Input.GetKeyDown(skill.actionKey) || !Input.GetKey(KeyCode.LeftAlt))
                 continue;
             if (skill.currentLevel == 3)
                 continue;
@@ -193,7 +193,7 @@ public class LevelController : MonoBehaviour
     {
         if (!canUpgradeUlti)
             return;
-        if (!Input.GetKeyDown(_darkMirrorSkill.actionKey) || !Input.GetKey(KeyCode.LeftControl))
+        if (!Input.GetKeyDown(_darkMirrorSkill.actionKey) || !Input.GetKey(KeyCode.LeftAlt))
             return;
         if (_darkMirrorSkill.currentLevel == 3)
             return;

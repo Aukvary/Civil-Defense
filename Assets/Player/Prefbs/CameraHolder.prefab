@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf072678b6dc13429951ed6dd9f5409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotattionSpeed: 300
+  _rotattionSpeed: 200
   _camera: {fileID: 8736767037894774986}
   _minFreeAngle: -60
   _maxFreeAngle: 60

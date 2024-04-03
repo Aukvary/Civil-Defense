@@ -14,7 +14,7 @@ public abstract class ActionSkill : Skill
 
     public bool IsTaget;
 
-    protected bool keyIsPressed => Input.GetKeyDown(actionKey) && !Input.GetKey(KeyCode.LeftControl);
+    protected bool keyIsPressed => Input.GetKeyDown(actionKey) && !Input.GetKey(KeyCode.LeftAlt);
 
     protected Ray viewDirection => _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
@@ -36,7 +36,6 @@ public abstract class ActionSkill : Skill
             DrawUI();
             return;
         }
-        _timer.text = "";
         if (!keyIsPressed || !IsTaget)
             return;
         UseSkill();
@@ -50,6 +49,8 @@ public abstract class ActionSkill : Skill
         int time = (int)(coolDownTime - (coolDownTime * (_currentCoolDownTime / coolDownTime)));
 
         _timer.text = time.ToString();
+        if(time < 1)
+            _timer.text = " ";
 
         _coolDownUI.anchorMax = new Vector2(1, value);
     }

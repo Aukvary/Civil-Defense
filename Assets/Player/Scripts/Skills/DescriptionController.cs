@@ -6,7 +6,7 @@ public class DescriptionController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.LeftControl))
+        if(Input.GetKey(KeyCode.LeftAlt))
             _descriptingUI.SetActive(true);
         else
             _descriptingUI.SetActive(false);

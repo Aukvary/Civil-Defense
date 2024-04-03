@@ -33,6 +33,12 @@ public class EnemyMoveController : MonoBehaviour
 
     private void Update()
     {
+        if(_currentTarget != null)
+        {
+            if (Vector3.Distance(_currentTarget.transform.position, transform.position) > 5)
+                _currentTarget = null;
+            _navMeshAgent.SetDestination(basePosition);
+        }
         PickNewTarget();
         _animator.SetBool("HasPath", _navMeshAgent.hasPath);
     }
