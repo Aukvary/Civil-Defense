@@ -1,6 +1,6 @@
 using UnityEngine;
 
-class GetterExp : MonoBehaviour
+public class GetterExp : MonoBehaviour
 {
 	[SerializeField] private int _containsExp;
 	[SerializeField] private PlayerTrigger _playerTrigger;

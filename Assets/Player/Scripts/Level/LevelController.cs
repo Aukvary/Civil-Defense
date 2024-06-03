@@ -10,15 +10,21 @@ public class LevelController : MonoBehaviour
     [SerializeField] private RectTransform _valueUI;
     [SerializeField] private TextMeshProUGUI _currentLevelUI;
     [SerializeField] private Color _boarderColor;
+
     [Space]
+
     [SerializeField] private List<Image> _boards;
     [SerializeField] private List<RectTransform> _skillsProgress;
     [SerializeField] private List<GameObject> _skillSblock;
+
     [Space]
+
     [SerializeField] private Image _ultiSkillBoarder;
     [SerializeField] private RectTransform _ultiProgress;
     [SerializeField] private GameObject _ultiBlock;
+
     [Space]
+
     [SerializeField] private List<int> _needExp = new List<int>();
 
     public List<bool> _enabled = new List<bool>(new bool[]{false, false, false, false});
